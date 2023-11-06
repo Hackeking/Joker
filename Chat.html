@@ -1,1 +1,219 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #131313, #000000);
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            font-family: 'Inter', sans-serif;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow-y: scroll;
+        }
+        .message-container {
+            list-style: none;
+            padding: 0;
+            max-height: 680px; 
+            
+            overflow-y: auto; 
+        }
+        .user-message {
+            background: #EC6EAD;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 10px 0;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: right;
+            color: #fff;
+            display: inline-block;
+            max-width: 80%; /* Limit the maximum width of the user messages */
+            word-wrap: break-word;
+        }
+        .ai-message {
+            background: #3494E6;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 10px 0;
+            box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            color: #fff;
+        }
+        .message-input-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            
+            
+        }
+        .message-input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+            padding:16px;
+            outline: none;
+            outline:none;
+        }
+        .send-button {
+            background-color: #EC6EAD;
+            color: #fff;
+            border: none;
+            ;
+            border-radius: 20px;
+            padding: 10px 20px;
+            padding:16px;
+            font-size: 14px;
+            margin-left: 10px;
+            outline:none;
+            cursor: pointer;
+            
+        }
+        #myDialogx {
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 320px;
+  height: 200px;
+  backdrop-filter: blur(29px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 0 24px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  z-index: 100;
+}
+
+#joinDiscord {
+  margin-top: 10px;
+  background: #e0e0e0;
+  border: none;
+  color: #333;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: inset 2px 2px 5px rgba(163,177,198,0.5), 
+              inset -2px -2px 5px rgba(255,255,255,0.6);
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <ul class="message-container" id="chat"></ul>
+        <div class="message-input-container">
+            <input type="text" id="question" class="message-input" placeholder="Ask a question...">
+            <button type="button" class="send-button" id="ask-button">Ask</button>
+        </div>
+    </div>
+    <dialog id="myDialogx">
+  <p>Hope You will like it our official website <a href="https://ionium.web.app" style="color: skyblue; font-size: 21px;"> Website </a><br><br>
+ Join our discord for any help or question and for cool AI things <a href="https://discord.gg/rg6HAr696" style="color:skyblue; font-size: 21.5px;margin-left: 6px;">
+ Join Our discord</a>
+  </p><br>
+  <button id="joinDiscord">close</button>
+</dialog>
+    <script>
+    alert(`its based on gpt4 and is running on my own resources and server and its 100% legal✅✅✅
+    
+    Features: its the most intelligent 🧠 chatbot in current time based on gpt4 ⚡⚡⚡⚡`)
+    alert('⚠️⚠️ use english only')
+    let dialogg = document.getElementById('myDialogx')
+      
+    let joinDiscord = document.getElementById('joinDiscord')
+    joinDiscord.onclick = function() {
+        dialogg.innerHTML = ''
+        dialogg.style.display = 'none'
+        dialogg.close()
+
+
+    }
+    let his = []
+        document.getElementById('ask-button').addEventListener('click', function() {
+            askQuestion();
+        });
+
+        document.getElementById('question').addEventListener('keyup', function(event) {
+            if (event.key === "Enter") {
+                askQuestion();
+            }
+        });
+
+        function askQuestion() {
+            var question = document.getElementById('question').value;
+
+            // User message
+            var userMessage = document.createElement('li');
+            userMessage.classList.add('user-message');
+            userMessage.innerText = question;
+            document.getElementById('chat').appendChild(userMessage);
+
+            // AI response
+            var aiMessage = document.createElement('li');
+            aiMessage.classList.add('ai-message');
+            aiMessage.innerText = "AI is thinking...";
+            document.getElementById('chat').appendChild(aiMessage);
+
+            // Fetch AI response
+            fetchAIResponse(question);
+        }
+
+        function fetchAIResponse(question) {
+            fetch(`https://WellinformedHeavyBootstrapping.yasirmecom.repl.co/ask?question=${`users new question :, ${ question }, ${ his } `} `)
+                .then(response => response.text())
+                .then(reply => {
+                    // Update AI response with the actual response/
+                    let ax = document.createElement('a');
+ax.href = 'https://ionium.web.app';
+ax.innerText = "website";
+ax.style.color = "red";
+
+
+var aiMessages = document.querySelectorAll('.ai-message');
+if (aiMessages.length > 0) {
+  aiMessages[aiMessages.length - 1].innerHTML = `AI: ${reply} official website `;
+  aiMessages[aiMessages.length - 1].appendChild(ax);
+
+                        his.push(`user previous question : ${question}, `)
+                    }
+                });
+        }
+    </script>
+</body>
+</html>
