@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;                     
+        }
+        .day_date{
+            position: fixed;
+            margin-top: -100px;
+        }
+        #p1{
+            margin-top: 30px;
+            color: white;
+            margin-left: 15px;
+            
+        }
+        #p2{
+            color: white;
+            margin-top: -10px;
+            margin-left: 32px;
+            font-size: 10px;
+            
+        }
+        video{
+            position: fixed;
+            top: 0;
+            left: -0.5%;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 50%;
+        }
+        @font-face { font-family:JuneBug ; src: url('JUNEBUG.TTF'); }
+        #day{
+                font-family: JuneBug
+            }
+        .menu{
+            position: fixed;           
+            background-color:transparent;
+            margin: 0;
+            top:10px;
+            right: 0;
+            margin-right: 30px;
+            z-index: 1000;
+        }
+        .menu ul{
+            list-style-type: none;  
+        }
+        .menu-nav a{
+            color: aliceblue;
+            text-decoration: none;
+            padding: 10px;
+            border-radius:0.5rem;
+            display: block;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 1px;
+        } 
+        .menu-nav li{
+            float: left;
+        }
+        .menu-nav a:hover{
+            background-image: linear-gradient(360deg,rgb(52, 52, 52),rgb(80, 78, 78));
+        }      
+        .con{
+            background-color: #333;
+            padding: 100px;
+            box-shadow: 0px -2px 15px black,0px 2px 15px black;
+            width:130px;
+            border-radius: 1rem;
+            margin-top: 100px;
+            height: 100vh;
+            overflow: hidden;
+            opacity: 3%;
+            transition: all 3s;
+        }
+        .con:hover{
+            opacity: 100%;
+            cursor: pointer;
+        }
+        .con p{
+           margin-top: 25px;
+            width: 250px;
+            text-align: center;
+            margin-left: -60px;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .con img{
+            width: 290px;
+            margin-top: -65px;
+            border-radius: 1rem;;
+            margin-left: -80px;
+            box-shadow: 0px -2px 70px rgb(164, 156, 156),0px 2px 70px rgb(164, 156, 156);
+        }
+    </style>
+</head>
+<body >
+    <div>
+    <Video autoplay loop muted >
+        <source id="vid" type="video/webm">
+    </Video>
+    <div class="day_date">
+        <p id="p1"><span id="day"></span></p>
+        <p id="p2"><span id="date"></span></p>
+    </div>   
+    <div class="menu">
+        <nav class="menu-nav">
+            <ul>
+        <p id="p2"><span id="date"></span></p>
+        <p id="p2"><span id="date"></span></p>
+                <li><a href="https://www.instagram.com/demonslayer_hc?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA==" target="_blank">Instagram</a></li>
+                <li><a href="#">Home</a></li>            
+            </ul>
+        </nav>
+    </div> 
+    <center>
+       <div class="con">
+        <img src="demonslayer.webp">
+        <p>
+            We finally know more about <span style="color: rgb(255, 0, 0);">Demon Slayer season 4</span>, AKA the Hashira Training arc. With 2024 just around the corner, animation studio Ufotable has unveiled its plans for next year - including a release window for the<span style="color: rgb(0, 247, 255);"> new season</span>, and an upcoming movie.
+        </p>
+       </div>
+    </center>
+    <script>
+        const total_days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+        const day = new Date();
+        const today = total_days[day.getDay()] ;
+        const vid = document.getElementById("vid")
+        document.getElementById("day").innerHTML= today.toLowerCase();
+        document.getElementById("date").innerHTML= parseInt(day.getMonth())+1 +" - "+ day.getDate() +" - "+day.getFullYear();
+        if(day.getDay() == 0 || day.getDay() == 1 || day.getDay() == 2 || day.getDay() == 3 ){
+                  vid.src = "smtw.webm"
+        }
+        else{
+            vid.src = "Tokyorevengers.webm"
+        }
+
+    </script>
+</div>
+</body>
+</html>
